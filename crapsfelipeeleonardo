@@ -35,3 +35,69 @@ if nome != "aaaaa":
                         if apostaa=="manter":                           #manter fase POINT
                             c = random.randint(1,6)
                             e = random.randint(1,6)
+                            y=c+e
+                            point = input(f"Você jogou os dados {c} e {e} nessa nova rodada e resultou em {y}")
+                            lista=["2","3","4","5","6","7","8","9","10","11","12"]
+                            while y!=z and y!=7:
+                                c = random.randint(1,6)
+                                e = random.randint(1,6)
+                                y=c+e
+                                print('Jogando novamente...')
+                            if y == z:
+                                print(f"Você jogou os dados {c} e {e} nessa nova rodada e resultou em {y}")
+                                d = d + aposta
+                                print (f"Ganhou! Dinheiro atual: {d}")
+                                ZY = input("Você quer continuar...? (sim/nao) ")
+                            elif y == 7:
+                                    print(f"Você jogou os dados {c} e {e} nessa nova rodada e resultou em {y}")
+                                    d = 0
+                                    print (f"Você perdeu tudo! Tente novamente, dinheiro atual: {d}")
+                                    break
+                        else:
+                            troca=input("Trocar para qual? Suas opções de aposta são: Field (f), Any Craps (ac), Twelve (t): ") 
+                            if troca == "f":                            #fase FIELD
+                                  dado1=random.randint(1,6)
+                                  dado2=random.randint(1,6)
+                                  soma=dado1+dado2
+                                  print (f"Você jogou os dados {dado1} e {dado2} nessa nova rodada e resultou em {soma}")
+                                  if soma==5 or soma==6 or soma==7 or soma ==8:
+                                      print("Você perdeu tudo. Tente novamente.")
+                                      break
+                                  elif soma ==2:
+                                      d=d+aposta*2
+                                      print(f"Você ganhou!Você tem agora {d}")
+                                      ZY = input("Você quer continuar...? (sim/nao) ")
+                                  elif soma==12:
+                                      d=d+3*aposta
+                                      print(f"Você ganhou!Você tem agora {d}")
+                                      ZY = input("Você quer continuar...? (sim/nao) ")
+                                  else:
+                                      d=d+aposta
+                                      print(f"Você ganhou!Você tem agora {d}")
+                                      ZY = input("Você quer continuar...? (sim/nao) ")
+                            elif troca=="ac":                           #fase ANY CRAPS
+                                dado3=random.randint(1,6)
+                                dado4=random.randint(1,6)
+                                soma2=dado3+dado4
+                                print (f"Você jogou os dados {dado3} e {dado4} nessa nova rodada e resultou em {soma2}")
+                                if soma2==2 or soma2==3 or soma2==12:
+                                    d=d+(aposta*7)
+                                    print(f"Você ganhou!Sua nova quantidade de dinheiro é 7 vezes maior!! Dinheiro atual:{d}")
+                                    ZY = input("Você quer continuar...? (sim/nao) ")
+                                else:
+                                     d=d-aposta
+                                     print(f"Você perdeu!Sua nova quantidade de dinheiro é:{d}")
+                                     ZY = input("Você quer continuar...? (sim/nao) ")
+                            else:                                       # fase TWELVE
+                                 dado5=random.randint(1,6)
+                                 dado6=random.randint(1,6)
+                                 soma3=dado5+dado6
+                                 print (f"Você jogou os dados {dado5} e {dado6} nessa nova rodada e resultou em {soma3}")         
+                                 if soma3==12:
+                                     d=d+(30*aposta)
+                                     print(f"Você ganhou!Sua nova quantidade de dinheiro é 30 vezes maior!! Dinheiro atual:{d}")
+                                     ZY = input("Você quer continuar...? (sim/nao) ")
+                                 else:
+                                     d=d-aposta
+                                     print(f"Você perdeu!Sua nova quantidade de dinheiro é:{d}")
+                                     ZY = input("Você quer continuar...? (sim/nao) ")
