@@ -1,1 +1,37 @@
-
+import random
+nome = input("Digite seu nome:\n")              #indentificação do jogador
+if nome != "aaaaa":
+    nomee = input (f"Seja bem vindo/a {nome}. Você acabou de entrar em um jogo chamado Craps, caso não saiba as regras escreva 1, caso saiba, APERTE ENTER...")
+    if nomee == "1":
+        print ("https://www.casino.pt/dados/")                 #link para regras do jogo 
+    else:
+        d = 100                                                #dinheiro estipulado para o início
+        print ("Vamos começar! Você está na fase Come out, suas opções de aposta são: Pass Line Bet (plb), Field (f), Any Craps (ac), Twelve (t). Você possui 100 reais.")    #tipos de apostas do usuário
+        ZY = input("Você quer continuar...? (sim/nao)\n")
+        while d > 0 and ZY == "sim":
+            a = random.randint(1,6)
+            b = random.randint(1,6)
+            aposta = int(input("Quanto você quer apostar: "))
+            if aposta == 0:
+                break
+            elif aposta > d:
+                print("Você não tem dinheiro sufuciente para a aposta!")
+            else:
+                tipo = input("Tipo de aposta: ")
+                if tipo == "plb":                             #começa PLB
+                    z = a + b
+                    plb = input(f"Os dados tirados foram {a} e {b}, portanto a soma resultou em {z}, APERTE ENTER para continuar...")
+                    if z == 11 or z == 7:                               #ganha a fase plb
+                        d = d + aposta
+                        print (f"Ganhou! Dinheiro atual: {d}")
+                        ZY = input("Você quer continuar...? (sim/nao) ")
+                    elif z == 2 or z == 3 or z == 12:                   #perde a fase plb
+                        d = d - aposta
+                        print (f"Você perdeu! Dinheiro atual: {d}")
+                        ZY = input("Você quer continuar...? (sim/nao) ")
+                    else: 
+                        print (f"Você mudou para a fase POINT!")        #começa a fase POINT
+                        apostaa=input("Quer manter o tipo de aposta ou quer mudar? (manter/mudar) ")
+                        if apostaa=="manter":                           #manter fase POINT
+                            c = random.randint(1,6)
+                            e = random.randint(1,6)
